@@ -10,11 +10,6 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 if not cap.isOpened():
     raise RuntimeError("Could not open OBS Virtual Camera. Try another index (0..5).")
 
-# region of your minimap in the OBS canvas (x,y,w,h)
-MINIMAP_ROI = (0, 0, 1920, 1080)
-SKILLS = (1506,25,184,234)# adjust to your OBS canvas coordinates
-MANA_VALUE = (1656, 124, 31, 16)
-
 def get_frame():
     returned, frame = cap.read()
 

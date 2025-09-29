@@ -2,8 +2,8 @@ import time
 import cv2
 import pygetwindow as gw
 from core.entity.player import Player
-import core.function.capture_screen as screen
-import core.function.get_screen_data as get_screen_data
+import core.function.cv.get_screen_data as get_screen_data
+import core.function.cv.capture_screen as screen
 import keyboard
 from core.config.config import Config
 
