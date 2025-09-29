@@ -1,18 +1,18 @@
 class Player:
     def __init__(self, level: int = 1, hp: int = 100, mana: int = 0,
-                 soul: int = 100, capacity: int = 0, speed: int = 0,
+                 sp: int = 100, cap: int = 0, speed: int = 0,
                  food: str = "00:00"):
         self.level = level
         self.hp = hp
         self.mana = mana
-        self.soul = soul
-        self.capacity = capacity
+        self.sp = sp
+        self.cap = cap
         self.speed = speed
         self.food = food  # MM:SS
 
     def __repr__(self):
         return (f"Player(Level={self.level}, HP={self.hp}, Mana={self.mana}, "
-                f"Soul={self.soul}, Cap={self.capacity}, Speed={self.speed}, "
+                f"Soul={self.sp}, Cap={self.cap}, Speed={self.speed}, "
                 f"Food='{self.food}')")
 
     def update_stat(self, stat_name: str, value):
@@ -25,8 +25,8 @@ class Player:
             "level": self.level,
             "hp": self.hp,
             "mana": self.mana,
-            "soul": self.soul,
-            "capacity": self.capacity,
+            "sp": self.sp,
+            "cap": self.cap,
             "speed": self.speed,
             "food": self.food,
         }
@@ -35,7 +35,7 @@ class Player:
         print(f"Level     : {self.level}")
         print(f"HP        : {self.hp}")
         print(f"Mana      : {self.mana}")
-        print(f"Soul Pts  : {self.soul}")
-        print(f"Capacity  : {self.capacity}")
+        print(f"SP        : {self.sp}")
+        print(f"Cap       : {self.cap}")
         print(f"Speed     : {self.speed}")
         print(f"Food Timer: {self.food}")
