@@ -1,11 +1,12 @@
 import time
 import cv2
 import pygetwindow as gw
-from core.entity.player import Player
-import core.function.cv.get_screen_data as get_screen_data
-import core.function.cv.capture_screen as screen
+from core.entities.player import Player
+import core.functions.cv.get_screen_data as get_screen_data
+import core.functions.cv.capture_screen as screen
 import keyboard
 from core.config.config import Config
+import os
 
 CONFIG = Config()
 
@@ -19,12 +20,11 @@ def get_game_bbox():
         time.sleep(0.5)
     win.activate()
     time.sleep(0.1)
-    return win.left, win.top, win.width, win.height
 
 
 class Bot:
     def __init__(self):
-        self.game_bbox = get_game_bbox()
+        get_game_bbox()
         self.last_action = 0.0
 
     def tick(self, player):
@@ -35,11 +35,14 @@ class Bot:
         mana = get_screen_data.get_frame_line_data(frame, 'mana')
         cap = get_screen_data.get_frame_line_data(frame, 'cap')
         speed = get_screen_data.get_frame_line_data(frame, 'speed')
+        food = get_screen_data.get_frame_line_data(frame, 'food')
+        os.system('cls')
         print('Hp: ' + str(hp))
         print('Mana: ' + str(mana))
         print('SP: ' + str(sp))
         print('Cap: ' + str(cap))
         print('Speed: ' + str(speed))
+        print('Food: ' + str(food))
         time.sleep(0.8)
 
 

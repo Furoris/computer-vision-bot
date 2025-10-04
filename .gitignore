@@ -1,3 +1,5 @@
 /PyCharmMiscProject.iml
 /.venv/
 /.idea/
+/dist/
+/main.exe
