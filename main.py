@@ -7,6 +7,7 @@ import core.functions.cv.capture_screen as screen
 import keyboard
 from core.config.config import Config
 import os
+from core.functions.input import key_input
 
 CONFIG = Config()
 
@@ -28,26 +29,22 @@ class Bot:
         self.last_action = 0.0
 
     def tick(self, player):
-        #frame = screen.get_frame()
-        frame = cv2.imread('assets/templates/test_frame.png')
-        sp = get_screen_data.get_frame_line_data(frame, 'sp')
-        hp = get_screen_data.get_frame_line_data(frame, 'hp')
-        mana = get_screen_data.get_frame_line_data(frame, 'mana')
-        cap = get_screen_data.get_frame_line_data(frame, 'cap')
-        speed = get_screen_data.get_frame_line_data(frame, 'speed')
-        food = get_screen_data.get_frame_line_data(frame, 'food')
-        hp_bar = get_screen_data.get_frame_line_data(frame, 'hp_bar')
-        mana_bar = get_screen_data.get_frame_line_data(frame, 'mana_bar')
+        frame = screen.get_frame()
+        #frame = cv2.imread('assets/templates/test_frame.png')
+
+        for attribute in vars(player):
+            value = get_screen_data.get_frame_line_data(frame, attribute)
+            player.update_stat(attribute, value)
+
         os.system('cls')
-        print('Hp: ' + str(hp))
-        print('Mana: ' + str(mana))
-        print('SP: ' + str(sp))
-        print('Cap: ' + str(cap))
-        print('Speed: ' + str(speed))
-        print('Food: ' + str(food))
-        print('HP Bar: ' + str(hp_bar))
-        print('Mana Bar: ' + str(mana_bar))
-        time.sleep(0.8)
+        player.pretty_print()
+
+        try:
+            mana = int(player.mana) if player.mana is not None else 0
+            if mana > 120:
+                key_input.press('0')
+        except ValueError:
+            print("Could not convert mana:", player.mana)
 
 
 def main():

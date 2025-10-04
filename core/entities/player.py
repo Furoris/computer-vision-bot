@@ -1,7 +1,14 @@
+from typing import Optional
+
 class Player:
-    def __init__(self, level: int = 1, hp: int = 100, mana: int = 0,
-                 sp: int = 100, cap: int = 0, speed: int = 0,
-                 food: str = "00:00"):
+    def __init__(self,
+                 level: Optional[int] = None,
+                 hp: Optional[int] = None,
+                 mana: Optional[int] = None,
+                 sp: Optional[int] = None,
+                 cap: Optional[int] = None,
+                 speed: Optional[int] = None,
+                 food: Optional[str] = None):
         self.level = level
         self.hp = hp
         self.mana = mana
@@ -9,11 +16,6 @@ class Player:
         self.cap = cap
         self.speed = speed
         self.food = food  # MM:SS
-
-    def __repr__(self):
-        return (f"Player(Level={self.level}, HP={self.hp}, Mana={self.mana}, "
-                f"Soul={self.sp}, Cap={self.cap}, Speed={self.speed}, "
-                f"Food='{self.food}')")
 
     def update_stat(self, stat_name: str, value):
         if not hasattr(self, stat_name):
