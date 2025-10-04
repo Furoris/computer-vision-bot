@@ -55,7 +55,7 @@ def main():
             t0 = time.time()
             bot.tick(player)
             dt = time.time() - t0
-            time.sleep(max(0, 1.0 / CONFIG.get('app','loop_hz', 'float') - dt))
+            #time.sleep(max(0, 1.0 / CONFIG.get('app','loop_hz', 'float') - dt))
             if keyboard.is_pressed('esc'):
                 print('Exiting script...')
                 break
