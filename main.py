@@ -36,6 +36,8 @@ class Bot:
         cap = get_screen_data.get_frame_line_data(frame, 'cap')
         speed = get_screen_data.get_frame_line_data(frame, 'speed')
         food = get_screen_data.get_frame_line_data(frame, 'food')
+        hp_bar = get_screen_data.get_frame_line_data(frame, 'hp_bar')
+        mana_bar = get_screen_data.get_frame_line_data(frame, 'mana_bar')
         os.system('cls')
         print('Hp: ' + str(hp))
         print('Mana: ' + str(mana))
@@ -43,6 +45,8 @@ class Bot:
         print('Cap: ' + str(cap))
         print('Speed: ' + str(speed))
         print('Food: ' + str(food))
+        print('HP Bar: ' + str(hp_bar))
+        print('Mana Bar: ' + str(mana_bar))
         time.sleep(0.8)
 
 
